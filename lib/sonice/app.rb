@@ -12,7 +12,7 @@ module Sonice
     set :public_dir, File.expand_path('../public', __FILE__)
     set :views, File.expand_path('../views', __FILE__)
     set :haml, format: :html5
-    set :protection, except: :frame_options
+    #set :protection, except: :frame_options
 
     def initialize
       @player = player
@@ -26,6 +26,26 @@ module Sonice
         puts "Connected to #{player.name}"
         player
       end
+    end
+
+    post '/player/next' do
+      player.next
+      redirect "/" unless request.xhr?
+    end
+
+    post '/player/prev' do
+      player.prev
+      redirect "/" unless request.xhr?
+    end
+
+    post '/player/play' do
+      player.play
+      redirect "/" unless request.xhr?
+    end
+
+    post '/player/pause' do
+      player.pause
+      redirect "/" unless request.xhr?
     end
 
     put '/player' do
