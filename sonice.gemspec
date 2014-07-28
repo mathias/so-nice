@@ -25,5 +25,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'xml-simple'
   s.add_runtime_dependency 'thin'
+  s.add_runtime_dependency 'foreman'
   s.add_development_dependency 'rack'
 end
